@@ -16,6 +16,7 @@ public class testKnifeScript : MonoBehaviour
     public Transform fruitTransform;
 
     public GameObject WinPanel;
+    public GameObject StartPanel;
     public UnityEngine.UI.Button restartButton;
     public UnityEngine.UI.Button nextButton;
 
@@ -24,8 +25,9 @@ public class testKnifeScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        isGameStart = true;
+        Time.timeScale = 0;
         originalPosition = transform.position;
+        StartPanel.SetActive(true);
         WinPanel.SetActive(false);
     }
 
@@ -75,6 +77,9 @@ public class testKnifeScript : MonoBehaviour
             Time.timeScale = 0;
             WinPanel.SetActive(true);
             transform.position = originalPosition;
+        }else if (collision.gameObject.tag == "StopCut")
+        {
+            isGameStart = false;
         }
         else if (collision.gameObject.tag == "Fruit")
         {
@@ -121,6 +126,13 @@ public class testKnifeScript : MonoBehaviour
         }
         Time.timeScale = 1;
         WinPanel.SetActive(false);
+    }
+
+    public void StartGame()
+    {
+        Time.timeScale = 1;
+        StartPanel.SetActive(false);
+        isGameStart=true;
     }
 
 }
