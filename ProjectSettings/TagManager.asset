@@ -8,6 +8,8 @@ TagManager:
   - Fruit
   - Knife
   - SlicePrefab
+  - StopSlice
+  - StopKnife
   layers:
   - Default
   - TransparentFX
